@@ -1,0 +1,9 @@
+br\com\teste\rest\resource\ConsultaGeralResource.class
+br\com\teste\rest\repository\ListaConsultaDadosGeraisRepositoryImpl.class
+br\com\teste\rest\model\Dados.class
+br\com\teste\rest\exception\ConsultaDadosGeraisRepositoryException.class
+br\com\teste\rest\repository\ListaConsultaDadosGeraisRepository.class
+br\com\teste\rest\model\Cliente.class
+br\com\teste\rest\service\ConsultaServiceImpl.class
+br\com\teste\rest\exception\ConsultaDadosGeraisException.class
+br\com\teste\rest\service\ConsultaService.class

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<div style="overflow:auto;">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Erro</title>
+	
+	<div th:replace="layout-default/includes :: head"></div>
+</head>
+
+<body>
+
+	<!-- <div th:replace="layout-default/header :: header"></div> -->
+	<div class="container" >
+		<div class="row">
+			<div class="col-md-10">
+				<div class="alert alert-dismissible alert-danger">
+					<h4 ><i class="fa fa-exclamation-triangle fa-1x" aria-hidden="true"></i> <strong>[[${(title != null ? title : 'Erro inesperado ao acessar o sistema.')}]]</strong> </h4>
+					
+					<span class="margem-baixo-10" th:text="${msgErro}"></span>
+					
+					<p class="margem-baixo-15 text-code"><strong><a href="javascript:;" class="text-danger erro-slide">Exibir detalhes do erro</a></strong></p>
+					
+					<div class="detalhes-erro" style="display: none;">
+						<pre th:text="${trace}" th:if="${trace != null}"></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+<script>
+$(document).ready(function() {
+	//$('table').removeClass('table table-striped table-bordered dataTable');
+	$(".erro-slide").on('click', function(e){
+			
+			e.preventDefault();
+	       var elem = $(this);
+		    $('.detalhes-erro').slideToggle('slow', function() {
+		       if ($(this).is(":visible")) {
+		         elem.text('Ocultar detalhes do erro ');                
+		       } else {
+		         elem.text('Exibir detalhes do erro ');                
+		       }        
+		    });
+	    });
+
+	
+	if ($('pre')[0]) {
+		console.log('Erro com detalhes');
+	} else {
+	  $(".text-code").hide();
+	}
+});
+</script>
+<style>
+
+pre {
+    
+    font-size: 12px!important;
+    text-align: initial!important;
+    word-break: break-all;
+    word-wrap: break-word;
+    font-weight: bold !important;
+    background-color: white!important;
+}
+
+</style>
+</div>
+</html>

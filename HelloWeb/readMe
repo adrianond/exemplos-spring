@@ -1,0 +1,4 @@
+http://localhost:8080/HelloWeb/hello
+
+#Chama a api rest para incluir um objeto Item, comento o controller HelloController, para utilizar essa requisiçao no RestServiceController
+http://localhost:8080/HelloWeb/hello

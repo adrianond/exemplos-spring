@@ -1,0 +1,3 @@
+<span th:if="${msgErro == null}">Erro inesperado ao acessar o sistema.</span>
+<span th:text="${msgErro}"></span>
+<pre th:text="${trace}" th:if="${trace != null}"></pre>

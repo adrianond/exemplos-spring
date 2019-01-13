@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="pt-br">
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script  type="text/javascript"  th:src="@{/resources/js/postrequest.js}"></script>
+<script  type="text/javascript"  th:src="@{/resources/js/jquery-3.2.1.min.js}"></script>
+
+
+ <script type="text/javascript">
+ $(document).ready(function () {
+	 $('#postResultDivError').hide();
+	 $('#postResultDivSucess').hide();
+	 
+	
+	 
+		// SUBMIT FORM
+	    $("#postBtn").click(function() {
+	    	alert("oi");
+	    	
+			// Prevent the form from submitting via the browser.
+	    	// isso vai cancelar qualquer ação padrão do elemento escolhido
+			//event.preventDefault();
+			ajaxPost();
+		});
+ }); 
+
+		
+	    function ajaxPost(){
+	    	// PREPARE FORM DATA
+	    	var formData = {
+	    		firstname : $("#firstname").val(),
+	    		lastname :  $("#lastname").val()
+	    	}
+	    	alert("teste");
+	    	// DO POST
+	    	$.ajax({
+				type : "POST",
+				contentType : "application/json",
+				url :"/postcustomer",
+				data : JSON.stringify(formData),
+				dataType : 'json',
+				success :retornoSucess,
+				error :retornoError,
+				complete : function(jqXHR, textStatus) {
+					
+				}
+			});
+	    	
+	    	// Reset FormData after Posting
+	    	resetData();
+	    }
+	    
+	    retornoSucess(result){
+		   if(result.status == "Done"){
+				$("#postResultDivSucess").html("<strong>" + "Post Successfully! Customer's Info: FirstName = " 
+						+ result.data.firstname + " ,LastName = " + result.data.lastname + "</strong>");
+				}else{
+					$("#postResultDivError").html("<strong>" + "Post Error" + "</strong>");
+					console.log("ERROR: ", e);
+				}
+				console.log(result);
+	    }
+	    
+	    retornoError(e){
+			$('#postResultDivError').show();
+			$("#postResultDivError").html("<strong>" + "Erro na chamada ajax: " + e.status + " "+  e.statusText + "</strong>");
+			console.log("ERROR: ", e);
+	    }
+	  
+	    function resetData(){
+	    	$("#firstname").val("");
+	    	$("#lastname").val("");
+	    }
+	
+	
+ </script>
+
+
+
+
+<title>Spring MVC</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div id="loginbox" style="margin-top: 50px;"
+			class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+			<div class="form-group" >
+					<div id="postResultDivSucess"></div>
+					<div id="postResultDivError" class="alert alert-danger col-md-15"></div>
+				</div>
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<div class="col-md-offset-4">Consultar Convidados</div>
+				</div>
+				<div style="padding-top: 30px" class="panel-body">
+					<form id="customerForm" method="post"  class="form-horizontal">
+						<fieldset>
+							<!-- Text input-->
+							<div class="form-group">
+								<label for="firstname" class="col-md-3 control-label">Nome</label>
+								<div class="col-md-9">
+									<input type="text" id="firstname" class="form-control" name="firstname" placeholder="Insira o Nome">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="lastname" class="col-md-3 control-label">Sobrenome</label>
+								<div class="col-md-9">
+									<input type="text" id="lastname" class="form-control" name="lastname" placeholder="Insira Sobrenome">
+								</div>
+							</div>
+							<!-- Button -->
+							<div class="form-group">
+								<!-- Button -->
+								<div class="col-md-offset-3 col-md-9">
+									<button id="postBtn" class="btn btn-primary consulta">Consultar</button>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<img src="/resources/images/baixar.png" alt="Smiley face" width="42" height="42">
+	<img src="<%=request.getContextPath()%>/resources/images/baixar.png">
+	
+</body>
+</html>

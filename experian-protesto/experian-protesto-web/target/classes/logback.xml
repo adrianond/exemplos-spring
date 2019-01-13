@@ -1,0 +1,63 @@
+<configuration>
+
+	<appender name="DEBUG-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<prudent>false</prudent>
+		<file>/home/produtos/prod/log/experian-protesto.debug.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/home/produtos/prod/log/experian-protesto.trace.log.%d.gz</fileNamePattern>
+			<maxHistory>30</maxHistory>
+    	</rollingPolicy>
+    	<encoder>
+      		<pattern>[%d{yyyy-MM-dd'T'HH:mm:ss.SSS}|%-5level|%logger|%thread|%X{id}|%msg#]%n%rEx</pattern>
+    	</encoder>
+ 	</appender>
+
+	<appender name="WARN-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<prudent>false</prudent>
+		<file>/home/produtos/prod/log/experian-protesto.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/home/produtos/prod/log/experian-protesto.log.%d.gz</fileNamePattern>
+			<maxHistory>30</maxHistory>
+    	</rollingPolicy>
+    	<encoder>
+      		<pattern>[%d{yyyy-MM-dd'T'HH:mm:ss.SSS}|%-5level|%logger|%thread|%X{id}|%msg#]%n%rEx</pattern>
+    	</encoder>
+    	
+    	<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+	       <level>WARN</level>
+	   </filter>
+ 	</appender>
+ 	
+ 	<appender name="INFO-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<prudent>false</prudent>
+		<file>/home/produtos/prod/log/experian-protesto.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/home/produtos/prod/log/experian-protesto.log.%d.gz</fileNamePattern>
+			<maxHistory>30</maxHistory>
+    	</rollingPolicy>
+    	<encoder>
+      		<pattern>[%d{yyyy-MM-dd'T'HH:mm:ss.SSS}|%-5level|%logger|%thread|%X{id}|%msg#]%n%rEx</pattern>
+    	</encoder>
+ 	</appender>
+ 	 	
+  	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">    
+    	<encoder>
+      		<pattern>[%d{yyyy-MM-dd'T'HH:mm:ss.SSS}|%-5level|%logger|%thread|%X{id}|%msg#]%n%rEx</pattern>
+    	</encoder>
+  	</appender>
+  	
+  	<logger name="org.springframework" level="debug">
+    	<appender-ref ref="console" />
+  	</logger>
+  	
+ 	<!-- <logger name="br.com.experian" level="debug">
+    	<appender-ref ref="console" />
+    	<appender-ref ref="FILE_MONITOR" />
+  	</logger> -->
+  	
+  	<root level="DEBUG">
+  		<appender-ref ref="INFO-FILE" />
+        <appender-ref ref="DEBUG-FILE" />
+        <appender-ref ref="WARN-FILE" />
+    </root>
+</configuration>
