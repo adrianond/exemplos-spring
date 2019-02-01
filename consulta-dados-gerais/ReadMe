@@ -1,1 +1,3 @@
-http://localhost:8080/consulta-dados-gerais/helloworld
+API rest desenvolvida com framework jersey 
+
+http://localhost:8090/consulta-dados-gerais/consulta

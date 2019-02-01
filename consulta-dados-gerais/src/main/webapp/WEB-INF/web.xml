@@ -11,12 +11,8 @@
 			<param-name>com.sun.jersey.config.property.packages</param-name>
 			<!--O SERVLET-CLASS E O PARAM-NAME NÃO SÃO MODIFICADOS, BASTA COPIAR E 
 				COLAR.. POIS ESTÁ UTILIZANDO O SERVLET QUE VEM NA BIBLIOTECA DO JERSEY -->
-			<param-value>br.com.teste.rest.resource</param-value>
-			<!-- JÁ O PARAM-VALUE É O ENDEREÇO DO PACOTE ONDE SE ENCONTRA O SEU RECURSO -->
-		</init-param>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/applicationContext.xml</param-value>
+			<param-value>dantas.adriano.consulta.dados.gerais.controler</param-value>
+			<!-- JÁ O PARAM-VALUE É O ENDEREÇO DO PACOTE ONDE SE ENCONTRA O SEU RECURSO/Controller -->
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
