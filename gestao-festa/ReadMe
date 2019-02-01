@@ -1,0 +1,4 @@
+Abra o browser e digite:http://localhost:8080/convidados
+
+Se quiser executar a aplicação com tomcat sem precisar inserir a URL no browser para já subir a pagina WEB:
+Altere no controller para @RequestMapping(value = "/", method = RequestMethod.GET), para seja usada a URL absoluta http://localhost:8080/gestao-festa/
