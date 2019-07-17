@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.cadastro;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;

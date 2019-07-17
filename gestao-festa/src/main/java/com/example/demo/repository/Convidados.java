@@ -1,10 +1,10 @@
-package com.example.demo.repository;
+package com.example.cadastro.repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.model.Convidado;
+import com.example.cadastro.model.Convidado;
 
 @Repository
 public class Convidados {
