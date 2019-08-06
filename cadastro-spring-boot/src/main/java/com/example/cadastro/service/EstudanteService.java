@@ -6,5 +6,6 @@ import java.util.Optional;
 
 public interface EstudanteService {
 
-     Optional<Estudante> consultarEstudantePorId(Long id);
+     Optional<Estudante> consultarEstudantePorMatricula(String matricula);
+     Estudante persistir(Estudante estudante);
 }
