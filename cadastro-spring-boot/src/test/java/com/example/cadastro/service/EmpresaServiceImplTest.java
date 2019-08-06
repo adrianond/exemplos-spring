@@ -2,7 +2,6 @@ package com.example.cadastro.service;
 
 import com.example.cadastro.entidades.Empresa;
 import com.example.cadastro.service.util.EmpresaUtil;
-import com.example.cadastro.service.util.EnderecoUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
