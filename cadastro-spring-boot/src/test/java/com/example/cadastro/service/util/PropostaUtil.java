@@ -2,8 +2,6 @@ package com.example.cadastro.service.util;
 
 import com.example.cadastro.entidades.Cliente;
 import com.example.cadastro.entidades.Proposta;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 

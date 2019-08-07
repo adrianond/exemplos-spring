@@ -1,5 +1,6 @@
 package com.example.cadastro.service;
 
+import com.example.cadastro.entidades.Acessorio;
 import com.example.cadastro.entidades.Veiculo;
 import com.example.cadastro.service.util.VeiculoUtil;
 import org.junit.Test;
@@ -8,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -31,5 +36,13 @@ public class VeiculoServiceImpTest {
     public void deveSalvarVeiculo() {
         Veiculo veiculo = veiculoService.persistir(VeiculoUtil.criarVeiculo());
         assertEquals(veiculo.getFabricante().getNome(), VeiculoUtil.criarVeiculo().getFabricante().getNome());
+    }
+
+    @Test
+    public void deveSalvarVeiculoComAcessorios() {
+        Veiculo veiculo = veiculoService.persistir(VeiculoUtil.criarVeiculoAcessorio());
+        Acessorio acessorio = veiculo.getAcessorios().stream().collect(Collectors.toList()).get(0);
+        Acessorio a = VeiculoUtil.criarVeiculoAcessorio().getAcessorios().stream().collect(Collectors.toList()).get(0);
+        assertEquals(a.getDescricao(), acessorio.getDescricao());
     }
 }

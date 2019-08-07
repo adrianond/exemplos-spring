@@ -8,4 +8,5 @@ public interface PropostaService {
 
     List<Proposta> persistir(List<Proposta> propostas);
     List<Proposta> consultar();
+    List<Proposta> consultarPropostaByIndentificadorCliente(Long cliente);
 }

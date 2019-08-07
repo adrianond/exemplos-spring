@@ -44,4 +44,9 @@ public class PropostaServiceImpl implements PropostaService {
         log.info("Consultando todas as Propostas {}:");
         return propostaRepository.findAll();
     }
+
+    @Override
+    public List<Proposta> consultarPropostaByIndentificadorCliente(Long cliente) {
+        return propostaRepository.consultarPropostaByIdentificadorCliente(cliente);
+    }
 }

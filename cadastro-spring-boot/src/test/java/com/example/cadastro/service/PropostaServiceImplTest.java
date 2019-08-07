@@ -1,8 +1,6 @@
 package com.example.cadastro.service;
 
-import com.example.cadastro.entidades.Cliente;
 import com.example.cadastro.entidades.Proposta;
-import com.example.cadastro.service.util.ClienteUtil;
 import com.example.cadastro.service.util.PropostaUtil;
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import java.util.List;
 
 @SpringBootTest
@@ -34,5 +31,12 @@ public class PropostaServiceImplTest {
         propostaService.persistir(PropostaUtil.criarProposta());
         List<Proposta> p = propostaService.consultar();
         Assert.assertEquals(PropostaUtil.criarProposta().get(0).getCliente().getNome(), p.get(0).getCliente().getNome());
+    }
+
+    @Test
+    public void deveConsultarPropostaPeloIdentidicadorCliente() {
+        List<Proposta>  propostas = propostaService.persistir(PropostaUtil.criarProposta());
+        List<Proposta> propostaList = propostaService.consultarPropostaByIndentificadorCliente(propostas.get(0).getCliente().getCliente());
+        Assert.assertEquals(PropostaUtil.criarProposta().get(0).getCliente().getNome(), propostaList.get(0).getCliente().getNome());
     }
 }
