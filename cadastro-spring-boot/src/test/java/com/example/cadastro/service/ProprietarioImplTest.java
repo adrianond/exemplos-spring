@@ -33,4 +33,11 @@ public class ProprietarioImplTest {
         Proprietario proprietario = proprietarioService.consultar(p.getCodigo());
         Assert.assertEquals(ProprietarioUtil.createProprietario().getNome(), proprietario.getNome());
     }
+
+    @Test
+    public void deveConsultarEmailProprietario() {
+        Proprietario p = proprietarioService.persistir(ProprietarioUtil.createProprietario());
+        Proprietario proprietario = proprietarioService.consultarEmail(p.getCodigo());
+        Assert.assertEquals(ProprietarioUtil.createProprietario().getNome(), proprietario.getNome());
+    }
 }

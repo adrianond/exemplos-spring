@@ -27,4 +27,9 @@ public class ProprietarioServiceImpl implements ProprietarioService {
         log.info("Buscando proprietario para a codigo {} ", codigo);
         return repository.findByCodigo(codigo);
     }
+
+    @Override
+    public Proprietario consultarEmail(Long codigo) {
+        return repository.findEmail(codigo);
+    }
 }

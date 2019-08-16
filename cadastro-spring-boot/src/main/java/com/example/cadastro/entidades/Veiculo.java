@@ -2,16 +2,17 @@ package com.example.cadastro.entidades;
 
 import com.example.cadastro.entidades.embeddable.Fabricante;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "veiculo")
 @Data
 @ToString
+@EqualsAndHashCode
 public class Veiculo  implements Serializable {
 
     @Embedded
@@ -21,13 +22,13 @@ public class Veiculo  implements Serializable {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "ANO_MODELO")
+    @Column(name = "ANO_MODELO", nullable = false)
     private int anoModelo;
 
-    @Column(name = "ANO_FABRICACAO")
+    @Column(name = "ANO_FABRICACAO", nullable = false)
     private int anoFabricacao;
 
-    @Column(name = "VALOR_COTACAO")
+    @Column(name = "VALOR_COTACAO", nullable = false)
     private Double cotacao;
 
     @OneToOne(optional = false, cascade = CascadeType.ALL)
@@ -38,5 +39,5 @@ public class Veiculo  implements Serializable {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "veiculo_acessorios", joinColumns = @JoinColumn(name = "cod_veiculo"),
             inverseJoinColumns = @JoinColumn(name = "cod_acessorio"))
-    private Set<Acessorio> acessorios = new HashSet<>();
+    private Set<Acessorio> acessorios;
 }

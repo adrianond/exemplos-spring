@@ -7,4 +7,6 @@ public interface ProprietarioService {
     Proprietario persistir(Proprietario proprietario);
 
     Proprietario consultar(Long codigo);
+
+    Proprietario consultarEmail(Long codigo);
 }

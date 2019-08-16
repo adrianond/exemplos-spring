@@ -27,4 +27,9 @@ public class VeiculoServiceImpl implements VeiculoService {
         log.info("Salvando veiculo :", veiculo);
         return veiculoRepository.save(veiculo);
     }
+
+    @Override
+    public Veiculo findVeiculo(Long id) {
+        return veiculoRepository.findVeiculo(id);
+    }
 }

@@ -27,8 +27,15 @@ public class VeiculoServiceImpTest {
 
     @Test
     public void deveTestarConsutaVeiculoPorId() {
-        Veiculo veiculo = veiculoService.persistir(VeiculoUtil.criarVeiculo());
+        Veiculo veiculo = veiculoService.persistir(VeiculoUtil.criarVeiculoAcessorio());
         Veiculo veiculoConsulta = veiculoService.consultarVeiculoPorId(veiculo.getId());
+        assertEquals(veiculoConsulta.getFabricante().getNome(), VeiculoUtil.criarVeiculo().getFabricante().getNome());
+    }
+
+    @Test
+    public void deveTestarConsutaVeiculoComAcessorios() {
+        Veiculo veiculo = veiculoService.persistir(VeiculoUtil.criarVeiculoAcessorio());
+        Veiculo veiculoConsulta = veiculoService.findVeiculo(veiculo.getId());
         assertEquals(veiculoConsulta.getFabricante().getNome(), VeiculoUtil.criarVeiculo().getFabricante().getNome());
     }
 

@@ -4,7 +4,6 @@ import com.example.cadastro.entidades.Acessorio;
 import com.example.cadastro.entidades.Proprietario;
 import com.example.cadastro.entidades.Veiculo;
 import com.example.cadastro.entidades.embeddable.Fabricante;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,10 +11,13 @@ public class VeiculoUtil {
 
     public static Veiculo criarVeiculo() {
         Fabricante fabricante = new Fabricante();
+        Set<String> emails = new HashSet<>();
+        emails.add("s.kwy@gmail.com");
+        emails.add("f.yyy@gmail.com");
         Veiculo veiculo = new Veiculo();
         Proprietario proprietario = new Proprietario();
         proprietario.setNome("Pedro XYZ");
-        proprietario.setEmail("pedro@yahoo.com.br");
+        proprietario.setEmails(emails);
         proprietario.setTelefone("999999999");
         fabricante.setNome("RAZAO SOCIAL");
         fabricante.setEmail("razao@gmail.com");
@@ -30,6 +32,9 @@ public class VeiculoUtil {
 
     public static Veiculo criarVeiculoAcessorio() {
         Fabricante fabricante = new Fabricante();
+        Set<String> emails = new HashSet<>();
+        emails.add("s.kwy@gmail.com");
+        emails.add("f.yyy@gmail.com");
         Veiculo veiculo = new Veiculo();
         Proprietario proprietario = new Proprietario();
         Acessorio direcaoHidraulica = new Acessorio();
@@ -37,7 +42,7 @@ public class VeiculoUtil {
         direcaoHidraulica.setDescricao("Direção Hidraulica");
         arCondicionado.setDescricao("Ar Condicioando");
         proprietario.setNome("Pedro XYZ");
-        proprietario.setEmail("pedro@yahoo.com.br");
+        proprietario.setEmails(emails);
         proprietario.setTelefone("999999999");
         fabricante.setNome("RAZAO SOCIAL");
         fabricante.setEmail("razao@gmail.com");

@@ -4,6 +4,7 @@ import com.example.cadastro.entidades.Veiculo;
 
 public interface VeiculoService {
 
-     Veiculo consultarVeiculoPorId(Long codigo);
+     Veiculo consultarVeiculoPorId(Long id);
      Veiculo persistir(Veiculo veiculo);
+     Veiculo findVeiculo(Long id);
 }
