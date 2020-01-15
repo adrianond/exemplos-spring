@@ -12,13 +12,10 @@ import javax.persistence.*;
 public class Produto {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "SEQ_PRODUTO", sequenceName = "SEQ_PRODUTO", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_PRODUTO")
     private Long id;
 
     @Column(name = "produto")
     private String nome;
-
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "cod_categoria", nullable = false)
-    private Categoria categoria;
 }

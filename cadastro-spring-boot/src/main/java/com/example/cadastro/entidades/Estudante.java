@@ -15,7 +15,8 @@ import java.util.Date;
 public class Estudante implements Serializable {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "SEQ_ESTUDANTE", sequenceName = "SEQ_ESTUDANTE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ESTUDANTE")
     private Long id;
 
     @Column(name = "nome", nullable = false)

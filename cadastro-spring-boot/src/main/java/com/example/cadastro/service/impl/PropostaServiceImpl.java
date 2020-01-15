@@ -1,6 +1,5 @@
 package com.example.cadastro.service.impl;
 
-import com.example.cadastro.entidades.Cliente;
 import com.example.cadastro.entidades.Proposta;
 import com.example.cadastro.repository.ClienteRepository;
 import com.example.cadastro.repository.PropostaRepository;
@@ -9,8 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class PropostaServiceImpl implements PropostaService {
@@ -25,28 +22,15 @@ public class PropostaServiceImpl implements PropostaService {
 
 
     @Override
-    public List<Proposta> persistir(List<Proposta> propostas) {
-        log.info("Salvando Propostas {}: ", propostas);
-        Proposta p = null;
-        Cliente cliente = null;
-        List<Proposta> propostaList = new ArrayList<>();
-        for (Proposta proposta : propostas) {
-            cliente = clienteRepository.save(proposta.getCliente());
-            p = propostaRepository.save(proposta);
-            p.setCliente(cliente);
-            propostaList.add(p);
-        }
-        return propostaList;
+    public Proposta persistir(Proposta proposta) {
+        log.info("Salvando Proposta {}: ", proposta.getProposta());
+          return propostaRepository.save(proposta);
     }
 
+
     @Override
-    public List<Proposta> consultar() {
+    public Proposta consultar(Long id) {
         log.info("Consultando todas as Propostas {}:");
-        return propostaRepository.findAll();
-    }
-
-    @Override
-    public List<Proposta> consultarPropostaByIndentificadorCliente(Long cliente) {
-        return propostaRepository.consultarPropostaByIdentificadorCliente(cliente);
+        return propostaRepository.findOne(id);
     }
 }

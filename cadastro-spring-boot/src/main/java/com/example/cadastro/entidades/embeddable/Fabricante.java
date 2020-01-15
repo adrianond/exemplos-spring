@@ -9,9 +9,12 @@ import javax.persistence.Embeddable;
 @Data
 public class Fabricante {
 
-    @Column(name = "RAZAO_SOCIAL")
+    @Column(name = "razao_social")
     private String nome;
 
+    @Column(name = "cnpj")
     private String cnpj;
+
+    @Column(name = "email")
     private String email;
 }

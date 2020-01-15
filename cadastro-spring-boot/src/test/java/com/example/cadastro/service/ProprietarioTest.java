@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @Profile("test")
-public class ProprietarioImplTest {
+public class ProprietarioTest {
 
     @Autowired
     ProprietarioService proprietarioService;
@@ -26,13 +26,6 @@ public class ProprietarioImplTest {
         Assert.assertEquals("Saulo KWY", p.getNome());
     }
 
-
-    @Test
-    public void deveConsultarProprietarioVeiculo() {
-        Proprietario p = proprietarioService.persistir(ProprietarioUtil.createProprietario());
-        Proprietario proprietario = proprietarioService.consultar(p.getCodigo());
-        Assert.assertEquals(ProprietarioUtil.createProprietario().getNome(), proprietario.getNome());
-    }
 
     @Test
     public void deveConsultarEmailProprietario() {

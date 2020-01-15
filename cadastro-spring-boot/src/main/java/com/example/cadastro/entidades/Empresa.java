@@ -3,6 +3,7 @@ package com.example.cadastro.entidades;
 import lombok.Data;
 import lombok.ToString;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,20 +13,21 @@ import java.util.List;
 public class Empresa {
 
    @Id
-   @GeneratedValue
+   @SequenceGenerator(name = "SEQ_EMPRESA", sequenceName = "SEQ_EMPRESA", allocationSize = 1)
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EMPRESA")
    private Long codigo;
 
-   @Column(name = "RAZAO_SOCIAL")
+   @Column(name = "razao_social")
    private String nome;
 
-   @Column(name = "CNPJ")
+   @Column(name = "cnpj")
    private String documento;
 
-   @JoinColumn(name = "EMPRESA_CODIGO_ENDERECO", referencedColumnName = "CODIGO", nullable = false)
-   @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
+   @JoinColumn(name = "codigo_endereco", referencedColumnName = "codigo", nullable = false)
+   @OneToOne(targetEntity = Endereco.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
    private Endereco endereco;
 
-   @JoinColumn(name = "EMPRESA_ID_TELEFONE", referencedColumnName =  "CODIGO", nullable = false)
-   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-   private List<Telefone> telefones;
+   @JoinColumn(name = "id_telefone", referencedColumnName =  "codigo", nullable = false)
+   @OneToMany(targetEntity = Telefone.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+   private List<Telefone> telefones = new ArrayList<>();
 }

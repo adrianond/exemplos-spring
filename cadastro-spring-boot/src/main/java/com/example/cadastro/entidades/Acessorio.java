@@ -12,9 +12,10 @@ import javax.persistence.*;
 public class Acessorio {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "SEQ_ACESSORIO", sequenceName = "SEQ_ACESSORIO", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ACESSORIO")
     private Long codigo;
 
-    @Column(name = "DESCRICAO", nullable = false)
+    @Column(name = "descricao", nullable = false)
     private String descricao;
 }

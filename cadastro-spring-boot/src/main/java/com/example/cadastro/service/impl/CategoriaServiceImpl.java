@@ -25,6 +25,6 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Override
     public Categoria consultar(Long id) {
         log.info("Consultando Categoria pelo id {} :", id);
-        return categoriaRepository.findOne(id);
+        return categoriaRepository.findById(id);
     }
 }

@@ -1,20 +1,21 @@
 package com.example.cadastro.service.util;
 
+import com.example.cadastro.entidades.Categoria;
 import com.example.cadastro.entidades.Produto;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class ProdutoUtil {
 
-    public static List<Produto> criarProduto() {
+    public static Categoria criarProduto() {
+        Categoria categoria = new Categoria();
+        categoria.setDescricao("bebida");
         Produto refrigerante = new Produto();
-        Produto cerveja = new Produto();
         refrigerante.setNome("Refrigerante");
+
+        Produto cerveja = new Produto();
         cerveja.setNome("Cerveja");
-        refrigerante.setCategoria(CategoriaUtil.criarCategoria());
-        cerveja.setCategoria(CategoriaUtil.criarCategoria());
-        List<Produto> produtos = Arrays.asList(refrigerante,cerveja);
-        return produtos;
+
+        categoria.getProdutos().add(refrigerante);
+        categoria.getProdutos().add(cerveja);
+        return categoria;
     }
 }

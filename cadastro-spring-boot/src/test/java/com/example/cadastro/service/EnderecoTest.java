@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class EnderecoServiceImplTest {
+public class EnderecoTest {
 
     @Autowired
     private EnderecoService enderecoService;

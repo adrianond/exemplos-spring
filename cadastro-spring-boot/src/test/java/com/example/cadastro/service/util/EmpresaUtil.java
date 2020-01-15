@@ -11,14 +11,17 @@ public class EmpresaUtil {
         Empresa empresa = new Empresa();
         Telefone telefoneComercialFixo = new Telefone();
         Telefone telefoneComercialMovel = new Telefone();
+
         telefoneComercialFixo.setCodigoInternacional("51");
         telefoneComercialFixo.setDiscagemDireta("11");
         telefoneComercialFixo.setNumero("33334411");
         telefoneComercialFixo.setTipo(TipoTelefone.COMERCIAL);
+
         telefoneComercialMovel.setCodigoInternacional("51");
         telefoneComercialMovel.setDiscagemDireta("11");
         telefoneComercialMovel.setNumero("33334411");
         telefoneComercialMovel.setTipo(TipoTelefone.COMERCIAL);
+
         empresa.setDocumento("9999999999");
         empresa.setNome("XZW LTDA");
         empresa.setEndereco(EnderecoUtil.criarEndereco());

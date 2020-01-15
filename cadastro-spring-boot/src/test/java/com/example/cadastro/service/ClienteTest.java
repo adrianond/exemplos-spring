@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @Profile("test")
-public class ClienteServiceImplTest {
+public class ClienteTest {
 
     @Autowired
     private ClienteService clienteService;

@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -19,25 +20,24 @@ public class Veiculo  implements Serializable {
     private Fabricante fabricante;
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "SEQ_VEICULO", sequenceName = "SEQ_VEICULO", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_VEICULO")
     private Long id;
 
-    @Column(name = "ANO_MODELO", nullable = false)
+    @Column(name = "ano_modelo", nullable = false)
     private int anoModelo;
 
-    @Column(name = "ANO_FABRICACAO", nullable = false)
+    @Column(name = "ano_fabricacao", nullable = false)
     private int anoFabricacao;
 
-    @Column(name = "VALOR_COTACAO", nullable = false)
+    @Column(name = "valor_cotacao", nullable = false)
     private Double cotacao;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "COD_PROPRIETARIO",referencedColumnName = "CODIGO", nullable = false)
+    @OneToOne(targetEntity = Proprietario.class, optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "cod_proprietario",referencedColumnName = "codigo", nullable = false)
     private Proprietario proprietario;
 
-    //tabela de associação entre  as tabelas veiculo e acessorio
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "veiculo_acessorios", joinColumns = @JoinColumn(name = "cod_veiculo"),
-            inverseJoinColumns = @JoinColumn(name = "cod_acessorio"))
-    private Set<Acessorio> acessorios;
+    @JoinColumn(name = "id_acessorio", referencedColumnName =  "codigo", nullable = false)
+    @OneToMany(targetEntity = Acessorio.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Acessorio> acessorios = new HashSet<>();
 }

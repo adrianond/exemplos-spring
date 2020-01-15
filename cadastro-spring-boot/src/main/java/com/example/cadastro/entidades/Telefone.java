@@ -12,19 +12,20 @@ import javax.persistence.*;
 public class Telefone {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "SEQ_TELEFONE", sequenceName = "SEQ_TELEFONE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_TELEFONE")
     private Long codigo;
 
-    @Column(name = "DDI")
+    @Column(name = "ddi")
     private String codigoInternacional;
 
-    @Column(name = "DDD")
+    @Column(name = "ddd")
     private String discagemDireta;
 
-    @Column(name = "NUMERO")
+    @Column(name = "numero_telfone")
     private String numero;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "TIPO_TELEFONE")
+    @Column(name = "tipo_telefone")
     private TipoTelefone tipo;
 }

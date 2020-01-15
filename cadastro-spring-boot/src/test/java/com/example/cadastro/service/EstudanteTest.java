@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class EstudanteServiceImpTest {
+public class EstudanteTest {
 
     @Autowired
     private EstudanteService service;
@@ -22,8 +22,8 @@ public class EstudanteServiceImpTest {
     @Test
     public void deveTestarConsutaEstudantePorId() throws ParseException {
         Estudante estudante = service.persistir(EstudanteUtil.criarEstudante());
-        service.consultarEstudantePorMatricula(estudante.getMatricula()).get();
-        assertEquals(estudante.getNome(), EstudanteUtil.criarEstudante().getNome());
+        Estudante e = service.consultarEstudantePorMatricula(estudante.getMatricula()).get();
+        assertEquals(e.getNome(), EstudanteUtil.criarEstudante().getNome());
     }
 
     @Test

@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "cliente_proposta")
@@ -12,18 +14,23 @@ import javax.persistence.*;
 public class Cliente {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "SEQ_CLIENTE", sequenceName = "SEQ_CLIENTE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CLIENTE")
     private Long cliente;
 
-    @Column(name  = "NOME")
+    @Column(name  = "nome")
     private String nome;
 
-    @Column(name = "SOBRE_NOME")
+    @Column(name = "sobre_nome")
     private String sobreNome;
 
-    @Column(name = "CPF")
+    @Column(name = "cpf")
     private String documento;
 
-    @Column(name = "RG")
+    @Column(name = "rg")
     private String documentoIdentificacao;
+
+    @JoinColumn(name = "id_proposta", referencedColumnName = "proposta")
+    @OneToMany(targetEntity = Proposta.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Proposta> propostas = new ArrayList<>();
 }

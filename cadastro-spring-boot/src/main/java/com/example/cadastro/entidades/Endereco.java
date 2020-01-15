@@ -12,28 +12,29 @@ import javax.persistence.*;
 public class Endereco {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "SEQ_ENDERECO", sequenceName = "SEQ_ENDERECO", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ENDERECO")
     private Long codigo;
 
-    @Column(name = "ENDERECO")
+    @Column(name = "endereco")
     private String logradouro;
 
-    @Column(name = "NUMERO_ENDERECO")
+    @Column(name = "numero_endereco")
     private String numero;
 
-    @Column(name = "BAIRRO")
+    @Column(name = "bairro")
     private String bairro;
 
-    @Column(name = "CODIGO_POSTAL")
+    @Column(name = "codigo_postal")
     private String cep;
 
-    @Column(name = "COMPLEMENTO_ENDERECO")
+    @Column(name = "complemento_endereco")
     private String complemento;
 
-    @Column(name = "CIDADE")
+    @Column(name = "cidade")
     private String cidade;
 
-    @Column(name = "ESTADO")
+    @Column(name = "estado")
     private String estado;
 
     @Enumerated(EnumType.STRING)

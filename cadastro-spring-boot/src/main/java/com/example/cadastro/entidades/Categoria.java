@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,12 +14,14 @@ import java.util.List;
 public class Categoria {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "SEQ_CATEGORIA", sequenceName = "SEQ_CATEGORIA", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CATEGORIA")
     private Long id;
 
-    @Column(name = "categora")
+    @Column(name = "descricao")
     private String descricao;
 
-    @OneToMany(mappedBy = "categoria")
-    List<Produto> produtos;
+    @JoinColumn(name = "id_produto", referencedColumnName = "id")
+    @OneToMany(targetEntity = Produto.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Produto> produtos = new ArrayList<>();
 }

@@ -1,7 +1,9 @@
 package com.example.cadastro.service;
 
 import com.example.cadastro.entidades.Empresa;
+import com.example.cadastro.entidades.Telefone;
 import com.example.cadastro.service.util.EmpresaUtil;
+import com.example.cadastro.service.util.TelefoneUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,21 +15,24 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @Profile("test")
-public class EmpresaServiceImplTest {
+public class TelefoneTest {
+
+    @Autowired
+    private TelefoneService telefoneService;
 
     @Autowired
     private EmpresaService empresaService;
 
     @Test
-    public void deveSalvarEmpresa() {
+    public void deveSalvarTelefone() {
         Empresa empresa = empresaService.persistir(EmpresaUtil.criarEmpresa());
-        Assert.assertEquals(EmpresaUtil.criarEmpresa().getNome(), empresa.getNome());
+        Assert.assertEquals(TelefoneUtil.criarTelefone().getNumero(), empresa.getTelefones().get(0).getNumero());
     }
 
     @Test
-    public void deveConsultarEmpresa() {
+    public void deveConsultarTelefone() {
         Empresa empresa = empresaService.persistir(EmpresaUtil.criarEmpresa());
-        Empresa e  = empresaService.consultar(empresa.getCodigo());
-        Assert.assertEquals(EmpresaUtil.criarEmpresa().getNome(), e.getNome());
+        Telefone t = telefoneService.consultar(empresa.getTelefones().get(0).getCodigo());
+        Assert.assertEquals(TelefoneUtil.criarTelefone().getNumero(), t.getNumero());
     }
 }

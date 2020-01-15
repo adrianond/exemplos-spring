@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/20201501092100_added_entity_proposta.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201501092100_added_entity_acessorio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201501092100_added_entity_categoria.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201501092100_added_entity_cliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201501092100_added_entity_empresa.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201501092100_added_entity_endereco.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201501092100_added_entity_estudante.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201501092100_added_entity_produto.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201501092100_added_entity_proprietario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201501092100_added_entity_telefone.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201501092100_added_entity_veiculo.xml" relativeToChangelogFile="false"/>
+
+
+    <!--Constraints-->
+    <include file="config/liquibase/changelog/20201501092100_added_entity_constraint_categoria.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201501092100_added_entity_constraint_cliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201501092100_added_entity_constraint_empresa.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201501092100_added_entity_constraint_veiculo.xml" relativeToChangelogFile="false"/>
+
+    <includeAll path="config/liquibase/custom_changelog/" relativeToChangelogFile="false" />
+
+</databaseChangeLog>

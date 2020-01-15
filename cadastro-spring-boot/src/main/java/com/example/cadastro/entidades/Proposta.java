@@ -13,22 +13,21 @@ import javax.persistence.*;
 public class Proposta {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "SEQ_PROPOSTA", sequenceName = "SEQ_PROPOSTA", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_PROPOSTA")
     private Long proposta;
 
-    @Column(name = "VALOR_FINANCIAMENTO")
+    @Column(name = "valor_financiamento")
     private Double valor;
 
-    @Column(name = "Taxa")
+    @Column(name = "taxa")
     private Double taxa;
 
-    @Column(name  = "TIPO")
+    @Column(name = "codigo_cliente")
+    private Long idCliente;
+
+    @Column(name  = "tipo")
     @Enumerated(EnumType.STRING)
     private TipoProposta tipo;
 
-    //não estou usando cascade = CascadeType.ALL, pois quero tombar uma lista de proposta que contém cliente,
-    //assim não gera erro de obejto dexanexado (detached)
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "CLIENTE_PROPOSTA", nullable = false, referencedColumnName = "CLIENTE")
-    private Cliente cliente;
 }
